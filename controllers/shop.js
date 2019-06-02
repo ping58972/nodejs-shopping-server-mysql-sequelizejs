@@ -186,7 +186,9 @@ exports.postOrder = (req, res, next) => {
 
 exports.getOrders = (req, res, next) => {
    req.user
-     .getOrders({include: ['products']})
+     //.getOrders({include: ['products']})
+      .getOrders({include: [{ model: Product }]})
+    // .getOrders({include: [{ association: 'Product' }]})
      .then(orders => {
        res.render('shop/orders', {
          path: '/orders',
